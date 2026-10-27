@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banking and ATM Transaction Processing System – OS Visualizer</title><link rel="stylesheet" href="style.css"></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/></symbol>
+<symbol id="i-dash" viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+<symbol id="i-queue" viewBox="0 0 24 24"><rect x="3" y="5" width="5" height="14"/><rect x="10" y="5" width="5" height="14"/><rect x="17" y="5" width="4" height="14"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></symbol>
+<symbol id="i-mem" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M7 7v10M11 7v10M15 7v10M6 20v-3M18 20v-3"/></symbol>
+</defs></svg>
+<div class="app">
+<aside class="side" id="sidebar">
+  <div class="brand"><svg class="i"><use href="#i-bank"/></svg><div><b>BankOps</b><small>OS Algorithm Visualizer</small></div></div>
+  <nav id="nav" aria-label="Modules">
+    <button data-t="home" class="on"><svg class="i"><use href="#i-dash"/></svg>Dashboard</button>
+    <button data-t="cpu"><svg class="i"><use href="#i-cpu"/></svg>CPU Scheduling</button>
+    <button data-t="pc"><svg class="i"><use href="#i-queue"/></svg>Producer–Consumer</button>
+    <button data-t="bank"><svg class="i"><use href="#i-lock"/></svg>Banker's Algorithm</button>
+    <button data-t="mem"><svg class="i"><use href="#i-mem"/></svg>Memory Management</button>
+    <button data-t="lab"><svg class="i"><use href="#i-cpu"/></svg>OS Concepts Lab</button>
+  </nav>
+</aside>
+<div class="content">
+<header class="top">
+  <div class="top-heading">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div><p class="eyebrow">BankOps / <span id="breadcrumb">Overview</span></p><h1 id="page-title">Operations overview</h1></div>
+  </div>
+  <div class="system-status"><span class="status-dot"></span><span>System operational</span></div>
+</header>
+<main>
+<section id="home">
+  <div class="hero">
+    <div><p class="eyebrow">CONTROL CENTER</p><h2>Transaction processing at a glance</h2><p>Monitor the operating system algorithms powering each banking workflow.</p></div>
+    <div class="hero-meta"><span class="hero-label">Environment</span><strong>LOCAL SIMULATOR</strong><span class="hero-label">Last checked</span><strong id="last-checked">Just now</strong></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-icon blue"><svg class="i"><use href="#i-cpu"/></svg></div><span>Processes loaded</span><strong id="k-proc">0</strong><small>Ready for scheduling</small></div>
+    <div class="kpi"><div class="kpi-icon violet"><svg class="i"><use href="#i-queue"/></svg></div><span>Transaction queue</span><strong id="k-queue">0 / 5</strong><small id="k-queue-note">Buffer available</small></div>
+    <div class="kpi"><div class="kpi-icon green"><svg class="i"><use href="#i-cpu"/></svg></div><span>CPU scheduling</span><strong id="k-cpu">Not run</strong><small>Execution status</small></div>
+    <div class="kpi"><div class="kpi-icon amber"><svg class="i"><use href="#i-lock"/></svg></div><span>Resource allocation</span><strong id="k-res">Not run</strong><small>Safety analysis</small></div>
+    <div class="kpi"><div class="kpi-icon teal"><svg class="i"><use href="#i-mem"/></svg></div><span>Memory utilization</span><strong id="k-mem">Not run</strong><small>Allocation status</small></div>
+  </div>
+  <div class="panel lifecycle-panel"><div class="section-heading"><div><p class="eyebrow">PROCESS FLOW</p><h2>Transaction lifecycle</h2></div><span class="live-badge"><span class="status-dot"></span>Live state</span></div>
+    <div class="lifecycle" id="lifecycle">
+      <div class="life-step active"><span class="life-icon">01</span><div><strong>ATM request</strong><small>Input received</small></div></div>
+      <div class="life-line"></div><div class="life-step"><span class="life-icon">02</span><div><strong>Transaction queue</strong><small>Awaiting producer</small></div></div>
+      <div class="life-line"></div><div class="life-step"><span class="life-icon">03</span><div><strong>CPU scheduling</strong><small>Not executed</small></div></div>
+      <div class="life-line"></div><div class="life-step"><span class="life-icon">04</span><div><strong>Memory allocation</strong><small>Not executed</small></div></div>
+      <div class="life-line"></div><div class="life-step"><span class="life-icon">05</span><div><strong>Safety check</strong><small>Not executed</small></div></div>
+      <div class="life-line"></div><div class="life-step"><span class="life-icon">06</span><div><strong>Completion</strong><small>Pending</small></div></div>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="card" data-go="pc"><div class="ch"><div class="module-icon"><svg class="i"><use href="#i-queue"/></svg></div><span class="st" id="st-pc">Ready</span></div><h3>Producer–Consumer</h3><p>Explore synchronized transaction queues using bounded buffers, mutexes, and semaphores.</p><a>Open module <span>→</span></a></div>
+    <div class="card" data-go="cpu"><div class="ch"><div class="module-icon"><svg class="i"><use href="#i-cpu"/></svg></div><span class="st" id="st-cpu">Ready</span></div><h3>CPU Scheduling</h3><p>Compare FCFS, SJF, Priority Scheduling, and Round Robin using execution timelines and performance metrics.</p><a>Open module <span>→</span></a></div>
+    <div class="card" data-go="mem"><div class="ch"><div class="module-icon"><svg class="i"><use href="#i-mem"/></svg></div><span class="st" id="st-mem">Ready</span></div><h3>Memory Management</h3><p>Compare First Fit and Best Fit allocation with memory utilization and fragmentation analysis.</p><a>Open module <span>→</span></a></div>
+    <div class="card" data-go="bank"><div class="ch"><div class="module-icon"><svg class="i"><use href="#i-lock"/></svg></div><span class="st" id="st-bank">Ready</span></div><h3>Banker's Algorithm</h3><p>Analyze resource allocation and determine whether the system is in a safe state.</p><a>Open module <span>→</span></a></div>
+    <div class="card" data-go="lab"><div class="ch"><div class="module-icon"><svg class="i"><use href="#i-cpu"/></svg></div><span class="st">7 labs</span></div><h3>OS Concepts Lab</h3><p>Explore synchronization, process states, deadlocks, paging, disks, file allocation, and threads.</p><a>Explore concepts <span>→</span></a></div>
+  </div>
+</section>
+
+<section id="lab" hidden>
+  <div class="module-intro"><p class="eyebrow">LEARNING STUDIO</p><h2>OS Concepts Lab</h2><p>Interactive demonstrations for the operating-system concepts behind reliable transaction processing. Every result is calculated from your inputs.</p></div>
+  <div class="lab-tabs" role="tablist">
+    <button class="active" data-lab="sync">Synchronization</button><button data-lab="states">Process states</button><button data-lab="deadlock">Deadlock detection</button><button data-lab="pages">Page replacement</button><button data-lab="disk">Disk scheduling</button><button data-lab="files">File allocation</button><button data-lab="threads">Threads</button>
+  </div>
+  <div id="lab-sync" class="lab-pane">
+    <div class="lab-grid"><div class="panel"><p class="eyebrow">THEORY</p><h2>Race conditions & mutual exclusion</h2><p>Two ATM requests that read and write a shared balance can lose an update when their critical sections overlap. A mutex serializes access; a semaphore models permission to enter the critical section.</p><p class="info">Banking example: two fictional withdrawals compete for one shared account balance. This browser demonstration does not access real accounts.</p><label class="field">Opening balance<input id="sync-balance" type="number" value="1000" min="0"></label><div class="row"><button onclick="runSync(false)">Run without mutex</button><button onclick="runSync(true)">Run with mutex</button><button class="alt" onclick="resetLab('sync')">Reset</button></div></div><div class="panel"><p class="eyebrow">SIMULATION</p><h2>Transaction execution</h2><div id="sync-out" class="lab-output"><p class="muted">Choose a simulation mode to see states, ordering, and final balance.</p></div></div></div>
+    <p class="complexity">Complexity: O(n) simulated operations, O(n) event storage.</p>
+  </div>
+  <div id="lab-states" class="lab-pane" hidden><div class="panel"><p class="eyebrow">PROCESS STATES</p><h2>State transitions & context switching</h2><p>New processes enter Ready, receive CPU time in Running, may block while waiting for I/O, and eventually terminate.</p><div class="state-diagram"><span>New</span><b>→</b><span>Ready</span><b>→</b><span>Running</span><b>→</b><span>Terminated</span><br><small>Running ↔ Waiting / Blocked ↔ Ready</small></div><div class="row"><button onclick="runStates()">Run transition trace</button><button class="alt" onclick="resetLab('states')">Reset</button></div><div id="states-out" class="lab-output"><p class="muted">Run the trace to see context switches between banking processes.</p></div></div></div>
+  <div id="lab-deadlock" class="lab-pane" hidden><div class="panel"><p class="eyebrow">DEADLOCK DETECTION</p><h2>Allocation and outstanding requests</h2><p>Enter matrices as rows separated by semicolons and values separated by commas. The detector uses the multiple-instance matrix algorithm; a graph cycle is only sufficient evidence under single-instance assumptions.</p><div class="row"><label class="field">Available resources<input id="dead-avail" value="0,0"></label><label class="field">Allocation matrix<input id="dead-alloc" value="1,0;0,1"></label><label class="field">Request matrix<input id="dead-req" value="0,1;1,0"></label></div><button onclick="runDeadlock()">Detect deadlock</button> <button class="alt" onclick="resetLab('deadlock')">Reset</button><div id="deadlock-out" class="lab-output"></div></div></div>
+  <div id="lab-pages" class="lab-pane" hidden><div class="panel"><p class="eyebrow">MEMORY ACCESS</p><h2>Page replacement visualizer</h2><p>Compare FIFO, LRU, and Optimal replacement for a transaction-processing reference string.</p><div class="row"><label class="field">Reference string<input id="page-ref" value="7,0,1,2,0,3,0,4,2,3,0,3,2"></label><label class="field">Frames<input id="page-frames" type="number" value="3" min="1" max="8"></label></div><button onclick="runPages()">Compare algorithms</button> <button class="alt" onclick="resetLab('pages')">Reset</button><div id="pages-out" class="lab-output"></div></div></div>
+  <div id="lab-disk" class="lab-pane" hidden><div class="panel"><p class="eyebrow">STORAGE ACCESS</p><h2>Disk scheduling visualizer</h2><p>Mechanical disk head movement is modeled for teaching; SSDs do not behave exactly like mechanical disks.</p><div class="row"><label class="field">Requests<input id="disk-req" value="98,183,37,122,14,124,65,67"></label><label class="field">Head<input id="disk-head" type="number" value="53" min="0"></label><label class="field">Cylinders (max)<input id="disk-max" type="number" value="199" min="1"></label><label class="field">Direction<select id="disk-dir"><option value="up">Up</option><option value="down">Down</option></select></label></div><button onclick="runDisk()">Compare algorithms</button> <button class="alt" onclick="resetLab('disk')">Reset</button><div id="disk-out" class="lab-output"></div></div></div>
+  <div id="lab-files" class="lab-pane" hidden><div class="panel"><p class="eyebrow">FILE SYSTEM</p><h2>Educational file allocation</h2><p>Create fictional transaction logs and compare contiguous, linked, and indexed allocation without touching real system files.</p><div class="row"><label class="field">File name<input id="file-name" value="txn-log"></label><label class="field">Blocks needed<input id="file-size" type="number" value="4" min="1" max="12"></label><button onclick="createLabFile()">Create file</button><button class="alt" onclick="resetLab('files')">Reset</button></div><div id="files-out" class="lab-output"></div></div></div>
+  <div id="lab-threads" class="lab-pane" hidden><div class="panel"><p class="eyebrow">MULTITHREADING</p><h2>Threads sharing one process</h2><p>These are visual tasks, not actual operating-system threads. Validation, logging, and notification share process resources and can require synchronization.</p><button onclick="runThreads()">Run thread timeline</button> <button class="alt" onclick="resetLab('threads')">Reset</button><div id="threads-out" class="lab-output"></div></div></div>
+</section>
+
+<section id="cpu" hidden>
+  <div class="module-intro"><p class="eyebrow">SCHEDULER LAB</p><h2>CPU Scheduling</h2><p>Compare how operating system schedulers organize banking transaction-processing tasks. Lower priority numbers represent higher priority.</p></div>
+  <div class="panel"><div class="section-heading"><div><p class="eyebrow">PROCESS INPUT</p><h2>Transaction workload</h2></div><span class="live-badge">5 algorithms available</span></div>
+    <div class="row"><label class="field">Process ID<input id="c-id" placeholder="e.g. P1" maxlength="12" required></label><label class="field">Transaction name<input id="c-name" placeholder="ATM Withdrawal"></label><label class="field">Arrival time<input id="c-at" type="number" placeholder="0" min="0" step="1" required></label><label class="field">Burst time<input id="c-bt" type="number" placeholder="5" min="1" step="1" required></label><label class="field">Priority<input id="c-pr" type="number" placeholder="1" min="1" step="1" required></label>
+    <button onclick="addProc()">Add process</button><button class="alt" onclick="loadProcs()">Load sample</button><button class="alt" onclick="resetCPU()">Reset</button></div>
+    <p id="cpu-feedback" class="feedback" role="status"></p>
+    <div class="scroll"><table id="ptab"></table></div>
+    <div class="row scheduler-controls"><label class="field">Algorithm<select id="algo"><option value="FCFS">FCFS — First Come, First Served</option><option value="SJF">SJF — Shortest Job First</option><option value="SRTF">SRTF — Shortest Remaining Time First</option><option value="RR">Round Robin</option><option value="PRIO">Priority Scheduling</option></select></label>
+    <label class="field" id="priority-mode-field">Priority mode<select id="priority-mode"><option value="NP">Non-preemptive</option><option value="P">Preemptive</option></select></label><label class="field">Time quantum<input id="quantum" type="number" min="1" step="1" value="2"></label><button onclick="runCPU()">Run simulation</button><button class="alt" onclick="compareAlgorithms()">Compare algorithms</button></div></div>
+  <div class="panel"><div class="section-heading"><div><p class="eyebrow">EXECUTION TRACE</p><h2>Simulation controls</h2></div><span id="sim-status" class="st">Ready</span></div><div class="simulation-bar"><button onclick="startSimulation()">Start</button><button class="alt" onclick="pauseSimulation()">Pause</button><button class="alt" onclick="resumeSimulation()">Resume</button><button class="alt" onclick="nextSimulationStep()">Next step</button><button class="alt" onclick="resetSimulation()">Reset</button><span>Time <strong id="sim-time">0</strong></span><span>Running <strong id="sim-running">Idle</strong></span><span>Ready queue <strong id="sim-queue">—</strong></span></div></div>
+  <div class="panel"><div class="section-heading"><div><p class="eyebrow">RESULTS</p><h2>Execution results</h2></div><span id="cpu-result-algo" class="st">Not executed</span></div><div id="cpu-out"><p class="muted">Run the scheduler to see the Gantt chart, calculations, and metrics.</p></div></div>
+  <div class="panel" id="comparison-panel" hidden><div class="section-heading"><div><p class="eyebrow">DECISION SUPPORT</p><h2>Algorithm comparison</h2></div></div><div id="comparison-out"></div><p class="note">The lowest average waiting time is not automatically the best choice; fairness, response time, utilization, and throughput also matter.</p></div>
+</section>
+
+<section id="pc" hidden>
+  <div class="panel"><h2>Queue controls</h2>
+    <div class="row"><label class="lbl">Buffer capacity <input id="cap" type="number" min="1" max="12" value="5"></label><button class="alt" onclick="setCap()">Set / Reset</button><button onclick="produce()">Produce transaction</button><button onclick="consume()">Consume transaction</button></div>
+    <p id="pc-stat" class="note"></p></div>
+  <div class="panel"><h2>Transaction queue (front → rear)</h2><div id="slots" class="slots"></div></div>
+  <div class="panel"><h2>Operation log (latest first)</h2><div id="pc-log" class="log"></div></div>
+</section>
+
+<section id="bank" hidden>
+  <div class="panel"><h2>Resource state input</h2>
+    <div class="row"><label class="lbl">Processes <input id="bn" type="number" min="1" max="8" value="5"></label><label class="lbl">Resource types <input id="bm" type="number" min="1" max="6" value="3"></label>
+    <button class="alt" onclick="buildGrid()">Generate grid</button><button class="alt" onclick="loadBank('safe')">Load safe example</button><button class="alt" onclick="loadBank('unsafe')">Load unsafe example</button></div>
+    <p class="note">R0 = Database Connections, R1 = Transaction Processing Services, R2 = ATM Communication Channels. P0..Pn are banking transactions.</p>
+    <div id="bgrid"></div><button onclick="runBank()">Check safety</button></div>
+  <div class="panel"><h2>Safety analysis</h2><div id="bank-out" class="mxgrid"><p class="muted">Run the safety check to see the Need matrix and result.</p></div></div>
+</section>
+
+<section id="mem" hidden>
+  <div class="panel"><h2>Allocation input</h2>
+    <div class="row"><label class="lbl">Block sizes (KB, comma separated) <input id="blocks" value="100,500,200,300,600"></label><label class="lbl">Process sizes (KB) <input id="msizes" value="212,417,112,426"></label>
+    <select id="malgo"><option value="FF">First Fit</option><option value="BF">Best Fit</option></select><button onclick="runMem()">Allocate</button></div>
+    <p class="note">Processes in order: ATM Withdrawal, Cash Deposit, Fund Transfer, Balance Inquiry, Transaction Record Update.</p></div>
+  <div class="panel"><h2>Memory map and results</h2><div id="mem-out"><p class="muted">Run the allocation to see the memory blocks.</p></div></div>
+</section>
+</main></div></div>
+<script src="app.js"></script></body></html>
