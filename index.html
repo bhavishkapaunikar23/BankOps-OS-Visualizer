@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banking and ATM Transaction Processing System – OS Visualizer</title><link rel="stylesheet" href="style.css"></head><body>
+<title>Banking and ATM Transaction Processing System – OS Visualizer</title><link rel="stylesheet" href="style.css?v=2"></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 10l9-6 9 6M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/></symbol>
 <symbol id="i-dash" viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></symbol>
@@ -27,7 +27,7 @@
     <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div><p class="eyebrow">BankOps / <span id="breadcrumb">Overview</span></p><h1 id="page-title">Operations overview</h1></div>
   </div>
-  <div class="system-status"><span class="status-dot"></span><span>System operational</span></div>
+  <div class="top-actions"><div class="system-status"><span class="status-dot"></span><span>System operational</span></div><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme">☾ <span>Theme</span></button></div>
 </header>
 <main>
 <section id="home">
@@ -117,4 +117,24 @@
   <div class="panel"><h2>Memory map and results</h2><div id="mem-out"><p class="muted">Run the allocation to see the memory blocks.</p></div></div>
 </section>
 </main></div></div>
-<script src="app.js"></script></body></html>
+<script src="app.js?v=2"></script><script>
+(() => {
+  const root = document.documentElement;
+  const toggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('bankops-theme');
+  const setTheme = theme => {
+    root.dataset.theme = theme;
+    localStorage.setItem('bankops-theme', theme);
+    if (toggle) {
+      toggle.textContent = theme === 'light' ? '☾' : '☀';
+      toggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} theme`);
+    }
+  };
+  setTheme(saved === 'dark' ? 'dark' : 'light');
+  if (toggle) toggle.addEventListener('click', () => setTheme(root.dataset.theme === 'light' ? 'dark' : 'light'));
+  const observer = new MutationObserver(records => records.forEach(record => {
+    if (record.type === 'childList' && record.target.nodeType === 1) record.target.classList.add('dom-updated');
+  }));
+  observer.observe(document.querySelector('main'), { childList: true, subtree: true });
+})();
+</script></body></html>
